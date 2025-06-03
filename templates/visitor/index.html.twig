@@ -1,0 +1,86 @@
+
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<style>
+    /* Стили для черной панели */
+    .header {
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header a {
+        color: white;
+        text-decoration: none;
+        margin-right: 20px;
+        transition: color 0.3s ease;
+    }
+
+    .header a:hover {
+        color: #ddd;
+    }
+
+    /* Стили для основного контента */
+    .example-wrapper {
+        margin: 1em auto;
+        max-width: 800px;
+        width: 95%;
+        font: 18px/1.5 sans-serif;
+        border: 1px solid #ddd;
+        padding: 20px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .example-wrapper h1 {
+        text-align: center;
+        margin-top: 0;
+    }
+
+    .example-wrapper p {
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    .example-wrapper a {
+        margin-right: 10px;
+        color: #007bff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .example-wrapper a:hover {
+        color: #0056b3;
+    }
+</style>
+
+<!-- Черная панель -->
+<div class="header">
+    <div>
+       <a href="{{ path('app_book_ticket') }}">Купить билет</a>
+       <a href="{{ path('app_visitor_tickets') }}">Личный кабинет</a>
+    </div>
+    <div>
+        <a href="{{ path('app_logout') }}">Выход</a>
+    </div>
+</div>
+
+<!-- Основное содержимое -->
+<div class="example-wrapper">
+    <!-- Ссылки на действия -->
+    <p style="text-align: center;">
+        <a </a>
+        <a </a>
+    </p>
+
+
+    <!-- Заголовок -->
+    <h1>Приветствуем вас!</h1>
+</div>
+
+{% endblock %}

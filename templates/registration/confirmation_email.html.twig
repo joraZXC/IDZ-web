@@ -1,0 +1,52 @@
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #e9ecef;
+        margin: 0;
+        padding: 0;
+    }
+    .example-wrapper {
+        margin: 20px auto;
+        max-width: 800px;
+        width: 95%;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        color: #333;
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    p {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    .background-image {
+        width: 100%;
+        height: 200px;
+        background-image: url('/images/mountains.jpg');
+        background-size: cover;
+        background-position: center;
+        margin-top: 20px;
+    }
+</style>
+<div class="example-wrapper">
+    <h1>Hi! Please confirm your email!</h1>
+    <p>
+        Please confirm your email address by clicking the following link: <br><br>
+        <a href="{{ signedUrl|raw }}">Confirm my Email</a>.
+        This link will expire in {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+    </p>
+    <p>Cheers!</p>
+    <div class="background-image"></div>
+</div>

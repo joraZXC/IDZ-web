@@ -1,0 +1,44 @@
+
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; margin-bottom: 5px; }
+    input, select { width: 100%; padding: 8px; }
+</style>
+    <div>
+        <a href="{{ path('app_logout') }}">Выход</a>
+    </div>
+<div class="example-wrapper">
+    <h1>Создать сеанс</h1>
+
+    {{ form_start(form) }}
+    <div class="form-group">
+        {{ form_label(form.hallNumber) }}
+        {{ form_widget(form.hallNumber) }}
+        {{ form_errors(form.hallNumber) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.price) }}
+        {{ form_widget(form.price) }}
+        {{ form_errors(form.price) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.availableSeats) }}
+        {{ form_widget(form.availableSeats) }}
+        {{ form_errors(form.availableSeats) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.movie) }}
+        {{ form_widget(form.movie) }}
+        {{ form_errors(form.movie) }}
+    </div>
+    <button type="submit">Создай сеанс</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_worker') }}">Вернуться обранто</a>
+</div>
+{% endblock %}

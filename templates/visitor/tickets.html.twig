@@ -1,0 +1,175 @@
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #e9ecef;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    .navbar {
+        background-color: #444;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+    }
+    .navbar a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+        font-size: 16px;
+    }
+    .navbar a:hover {
+        text-decoration: underline;
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .header a {
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+        font-size: 14px;
+    }
+    .header a:hover {
+        text-decoration: underline;
+    }
+
+    .example-wrapper {
+        margin: 20px auto;
+        max-width: 800px;
+        width: 95%;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        flex-grow: 1;
+    }
+    h1 {
+        color: #333;
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #555;
+    }
+    input, select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+    button {
+        background-color: #444;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+    }
+    button:hover {
+        background-color: #333;
+    }
+    a {
+        color: #007bff;
+        text-decoration: none;
+        font-size: 14px;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    .ticket-list {
+        margin-top: 20px;
+    }
+    .ticket-list table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .ticket-list th, .ticket-list td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    .ticket-list th {
+        background-color: #f2f2f2;
+    }
+    .background-image {
+        width: 100%;
+        height: 200px;
+        background-image: url('/images/mountains.jpg');
+        background-size: cover;
+        background-position: center;
+        margin-top: 20px;
+    }
+
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+</style>
+
+<div class="header">
+    <div>
+        <a href="{{ path('app_book_ticket') }}">Купить билет</a>
+        <a href="{{ path('app_visitor_tickets') }}">Личный кабинет</a>
+    </div>
+    <div>
+        <a href="{{ path('app_logout') }}">Выход</a>
+    </div>
+</div>
+
+<div class="example-wrapper">
+    <h1>Мои билеты</h1>
+
+    {% if tickets|length > 0 %}
+        <div class="ticket-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Movie</th>
+                        <th>Hall</th>
+                        <th>Seats</th>
+                        <th>Total Price</th>
+                        <th>Booking Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ticket in tickets %}
+                        <tr>
+                            <td>{{ ticket.screening.movie.title }}</td>
+                            <td>{{ ticket.screening.hallNumber }}</td>
+                            <td>{{ ticket.seatsCount }}</td>
+                            <td>{{ ticket.totalPrice }}</td>
+                            <td>{{ ticket.bookingTime|date('Y-m-d H:i') }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p>Билетов нет</p>
+    {% endif %}
+
+
+    <br>
+   
+</div>
+{% endblock %}

@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Кинотеатр{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    {% block stylesheets %}{% endblock %}
+</head>
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+<body>
+    <nav>
+        <a href="{{ path('app_home') }}">Главная</a>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('app_worker') }}">Рабочая панель</a>
+            <a href="{{ path('app_logout') }}">Выйти</a>
+        {% elseif is_granted('ROLE_USER') %}
+            <a href="{{ path('app_visitor') }}">Личный кабинет</a>
+            <a href="{{ path('app_logout') }}">Выйти</a>
+        {% else %}
+            <a href="{{ path('app_login') }}">Войти</a>
+            <a href="{{ path('app_register') }}">Регистрация</a>
+        {% endif %}
+    </nav>
+    {% block body %}{% endblock %}
+</body>
 </html>

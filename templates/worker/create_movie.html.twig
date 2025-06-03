@@ -1,0 +1,28 @@
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; margin-bottom: 5px; }
+    input, select { width: 100%; padding: 8px; }
+</style>
+    <div>
+        <a href="{{ path('app_logout') }}">Выход</a>
+    </div>
+<div class="example-wrapper">
+    <h1>xСоздать фильм</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.genre) }}
+        {{ form_row(form.duration) }}
+        {{ form_row(form.releaseDate) }}
+        {{ form_row(form.description) }}
+        <button type="submit" class="btn">Добавить фильм</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_worker') }}">Обратно на начальное поле</a>
+</div>
+{% endblock %}
